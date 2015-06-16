@@ -1,22 +1,14 @@
-chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-	// MEMO window.onload実行前に表示されるとtimingオブジェクトが取得できないため、intervalでチェック
-	var intervalID = setInterval(function () {
-		chrome.tabs.sendMessage(tabs[0].id, {action: "getPerformance"}, function(response) {
-			if (response && response.timing) {
-				$("#load-time").text(getSecondStr(response.timing.navigationStart, response.timing.loadEventEnd));
-
-				var html = "";
-				var json = getTimingData(response.timing);
-				for (var i in json) {
-					html += getRowHtml(i, json[i]);
-				}
-				$("tbody").append(html);
-				$("#loading-area").hide();
-				$("#main-area").show();
-				clearInterval(intervalID);	// timingオブジェクトが取得できたためinterval解除
-			}
-		});
-	}, 500);
+chrome.tabs.getSelected(null, function (tab) {
+	chrome.storage.local.get('cache', function(data) {
+		var timing = data.cache['tab' + tab.id];
+		document.getElementById("load-time").innerText = getSecondStr(timing.navigationStart, timing.loadEventEnd);
+		var html = "";
+		var json = getTimingData(timing);
+		for (var i in json) {
+			html += getRowHtml(i, json[i]);
+		}
+		document.getElementsByTagName("tbody")[0].innerHTML = html;
+    });
 });
 
 function getTimingData(timing) {
