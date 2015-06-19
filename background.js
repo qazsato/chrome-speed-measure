@@ -7,8 +7,11 @@ chrome.runtime.onMessage.addListener(
 			data.cache['tab' + sender.tab.id] = request.timing;	// cacheにtiming値を保存
 			chrome.storage.local.set(data);
 		});
-		var totalTime = "" + ((request.timing.loadEventEnd - request.timing.navigationStart) / 1000);
-		chrome.browserAction.setBadgeText({text: totalTime.substring(0, 4), tabId: sender.tab.id});
+
+		var startTime = request.timing.redirectStart === 0 ? request.timing.fetchStart : request.timing.redirectStart;
+		var endTime = request.timing.loadEventEnd;
+		var totalTime = ((endTime - startTime) / 1000).toFixed(2);
+		chrome.browserAction.setBadgeText({text: totalTime, tabId: sender.tab.id});
 	}
 );
  

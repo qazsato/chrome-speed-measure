@@ -8,7 +8,7 @@ h1 {
 
 table {
 	width: 100%;
-	border-collapse: collapse;
+	border-spacing: 1px;
 }
 
 table tbody tr:nth-child(odd) {
@@ -20,9 +20,18 @@ table tbody tr:nth-child(even) {
 }
 
 table tbody tr td {
-	width: 50%;
 	padding: 5px;
+	text-align: center;
 	word-break: break-all;
+}
+table tbody tr td.label {
+	width: 20%;
+}
+table tbody tr td.name {
+	width: 40%;
+}
+table tbody tr td.time {
+	width: 40%;
 }
 
 .right {

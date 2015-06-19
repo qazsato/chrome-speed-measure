@@ -1,36 +1,32 @@
 chrome.tabs.getSelected(null, function (tab) {
 	chrome.storage.local.get('cache', function(data) {
 		var timing = data.cache['tab' + tab.id];
-		document.getElementById("load-time").innerText = getSecondStr(timing.navigationStart, timing.loadEventEnd);
-		var html = "";
-		var json = getTimingData(timing);
-		for (var i in json) {
-			html += getRowHtml(i, json[i]);
-		}
-		document.getElementsByTagName("tbody")[0].innerHTML = html;
+		// Total
+		document.getElementById("total-time").innerText = getSecondStr(timing.redirectStart === 0 ? timing.fetchStart : timing.redirectStart, timing.loadEventEnd);
+
+		// Network
+		document.getElementById("network-time").innerText = getSecondStr(timing.redirectStart, timing.connectEnd);
+		document.getElementById("redirect-time").innerText = getSecondStr(timing.redirectStart, timing.redirectEnd);
+		document.getElementById("appCache-time").innerText = getSecondStr(timing.fetchStart, timing.domainLookupStart);
+		document.getElementById("dns-time").innerText = getSecondStr(timing.domainLookupStart, timing.domainLookupEnd);
+		document.getElementById("tcp-time").innerText = getSecondStr(timing.connectStart, timing.connectEnd);
+
+		// Server
+		document.getElementById("server-time").innerText = getSecondStr(timing.requestStart, timing.responseEnd);
+		document.getElementById("request-time").innerText = getSecondStr(timing.requestStart, timing.responseStart);
+		document.getElementById("response-time").innerText = getSecondStr(timing.responseStart, timing.responseEnd);
+
+		// Client
+		document.getElementById("client-time").innerText = getSecondStr(timing.domLoading, timing.loadEventEnd);
+		document.getElementById("processing-time").innerText = getSecondStr(timing.domLoading, timing.domComplete);
+		document.getElementById("load-time").innerText = getSecondStr(timing.loadEventStart, timing.loadEventEnd);
     });
 });
 
-function getTimingData(timing) {
-	return {
-		"redirect"		: getSecondStr(timing.redirectStart, timing.redirectEnd),
-		"AppCache"		: getSecondStr(timing.fetchStart, timing.domainLookupStart),
-		"DNS"			: getSecondStr(timing.domainLookupStart, timing.domainLookupEnd),
-		"TCP"			: getSecondStr(timing.connectStart, timing.connectEnd),
-		"Request"		: getSecondStr(timing.requestStart, timing.responseStart),
-		"Response"		: getSecondStr(timing.responseStart, timing.responseEnd),
-		"Processing"	: getSecondStr(timing.domLoading, timing.domComplete),
-		"onLoad"		: getSecondStr(timing.loadEventStart, timing.loadEventEnd),
-	};
-}
-
 function getSecondStr(startTime, endTime) {
-	return (endTime - startTime) / 1000 + "秒"; 
-}
-
-function getRowHtml(key, value) {
-	return "<tr>" +
-				"<td>" + key + "</td>" +
-				"<td>" + value + "</td>" +
-			"</tr>";
+	if (startTime === 0 || endTime === 0) {
+		return "-";
+	}
+	var time = (endTime - startTime) / 1000;
+	return time.toFixed(2) + "秒"; 
 }

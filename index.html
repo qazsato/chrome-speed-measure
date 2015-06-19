@@ -7,15 +7,51 @@
 </head>
 <body>
 	<section id="main-area">
-		<h1 id="load-time"></h1>
+		<h1 id="total-time"></h1>
 		<table>
 			<thead>
 				<tr>
+					<th>part</th>
 					<th>process</th>
 					<th>second</th>
 				</tr>
 			</thead>
 			<tbody>
+				<tr>
+					<td class="label" rowspan="4">Network<br><span id="network-time"> - </span></td>
+					<td class="name">Redirect</td>
+					<td id="redirect-time" class="time"> - </td>
+				</tr>
+				<tr>
+					<td class="name">AppCache</td>
+					<td id="appCache-time" class="time"> - </td>
+				</tr>
+				<tr>
+					<td class="name">DNS</td>
+					<td id="dns-time" width="40%"> - </td>
+				</tr>
+				<tr>
+					<td class="name">TCP</td>
+					<td id="tcp-time" class="time"> - </td>
+				</tr>
+				<tr>
+					<td class="label" rowspan="2">Server<br><span id="server-time"> - </span></td>
+					<td class="name">Request</td>
+					<td id="request-time" class="time"> - </td>
+				</tr>
+				<tr>
+					<td class="name">Response</td>
+					<td id="response-time" class="time"> - </td>
+				</tr>
+				<tr>
+					<td class="label" rowspan="5">Client<br><span id="client-time"> - </span></td>
+					<td class="name">Processing</td>
+					<td id="processing-time" class="time"> - </td>
+				</tr>
+				<tr>
+					<td class="name">Load</td>
+					<td id="load-time" class="time"> - </td>
+				</tr>
 			</tbody>
 		</table>
 		<br>
