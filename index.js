@@ -1,11 +1,12 @@
 chrome.tabs.getSelected(null, function (tab) {
 	chrome.storage.local.get('cache', function(data) {
 		var timing = data.cache['tab' + tab.id];
+		var startTime = timing.redirectStart === 0 ? timing.fetchStart : timing.redirectStart;
 		// Total
-		document.getElementById("total-time").innerText = getSecondStr(timing.redirectStart === 0 ? timing.fetchStart : timing.redirectStart, timing.loadEventEnd);
+		document.getElementById("total-time").innerText = getSecondStr(startTime, timing.loadEventEnd);
 
 		// Network
-		document.getElementById("network-time").innerText = getSecondStr(timing.redirectStart, timing.connectEnd);
+		document.getElementById("network-time").innerText = getSecondStr(startTime, timing.connectEnd);
 		document.getElementById("redirect-time").innerText = getSecondStr(timing.redirectStart, timing.redirectEnd);
 		document.getElementById("appCache-time").innerText = getSecondStr(timing.fetchStart, timing.domainLookupStart);
 		document.getElementById("dns-time").innerText = getSecondStr(timing.domainLookupStart, timing.domainLookupEnd);
