@@ -1,5 +1,5 @@
 body {
-	width: 300px;
+	width: 340px;
 }
 
 h1 {
@@ -24,14 +24,17 @@ table tbody tr td {
 	text-align: center;
 	word-break: break-all;
 }
+
 table tbody tr td.label {
 	width: 20%;
 }
-table tbody tr td.name {
-	width: 40%;
+
+table tbody tr td.sub-label {
+	width: 22%;
 }
-table tbody tr td.time {
-	width: 40%;
+
+table tbody tr td.name[colspan="2"] {
+	width: 60%;
 }
 
 .right {

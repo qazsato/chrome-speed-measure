@@ -20,12 +20,16 @@ chrome.tabs.getSelected(null, function (tab) {
 		// Client
 		document.getElementById("client-time").innerText = getSecondStr(timing.domLoading, timing.loadEventEnd);
 		document.getElementById("processing-time").innerText = getSecondStr(timing.domLoading, timing.domComplete);
+		document.getElementById("domInteractive-time").innerText = getSecondStr(timing.domLoading, timing.domInteractive);
+		document.getElementById("parserBlock-time").innerText = getSecondStr(timing.domInteractive, timing.domContentLoadedEventStart);
+		document.getElementById("domContentLoaded-time").innerText = getSecondStr(timing.domInteractive, timing.domContentLoadedEventEnd);
+		document.getElementById("domComplete-time").innerText = getSecondStr(timing.domContentLoadedEventEnd, timing.domComplete);
 		document.getElementById("load-time").innerText = getSecondStr(timing.loadEventStart, timing.loadEventEnd);
     });
 });
 
 function getSecondStr(startTime, endTime) {
-	if (startTime === 0 || endTime === 0) {
+	if (startTime === 0 || endTime === 0 || (endTime - startTime === 0)) {
 		return "-";
 	}
 	var time = (endTime - startTime) / 1000;
