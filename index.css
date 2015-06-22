@@ -3,12 +3,23 @@ body {
 }
 
 h1 {
+	margin: 15px 0;
 	font-size: 30px;
 }
 
 table {
 	width: 100%;
 	border-spacing: 1px;
+}
+
+table thead tr {
+	height: 24px;
+	background-color: #2C3E50;
+}
+
+table thead tr th {
+	color: white;
+	font-weight: normal;
 }
 
 table tbody tr:nth-child(odd) {
@@ -35,6 +46,10 @@ table tbody tr td.sub-label {
 
 table tbody tr td.name[colspan="2"] {
 	width: 60%;
+}
+
+a {
+	outline: none;
 }
 
 .right {

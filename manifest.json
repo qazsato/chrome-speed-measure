@@ -2,7 +2,7 @@
 	"name": "速度はかるくん",
 	"version": "1.2",
 	"manifest_version": 2,
-	"description": "表示速度計測ツール",
+	"description": "Webパフォーマンス計測ツール",
 	"content_scripts": [{
 		"matches": ["http://*/*", "https://*/*"],
 		"js": ["content_script.js"]
