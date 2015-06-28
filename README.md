@@ -21,30 +21,50 @@ HTML5のNavigation Timing APIを使用し算出をおこなっています。
 
 ####Network
 - Redirect (リダイレクトをおこなう時間)
-      performance.timing.redirectEnd - performance.timing.redirectStart
+
+  ``performance.timing.redirectEnd - performance.timing.redirectStart``
 - AppCache (アプリケーションキャッシュの確認と要求をおこなう時間)
-      performance.timing.domainLookupStart - performance.timing.fetchStart
+
+  ``performance.timing.domainLookupStart - performance.timing.fetchStart``
+
 - DNS (DNSルックアップをおこなう時間)
-      performance.timing.domainLookupEnd - performance.timing.domainLookupStart
+
+  ``performance.timing.domainLookupEnd - performance.timing.domainLookupStart``
+
 - TCP (ブラウザがサーバに接続するまでの時間)
-      performance.timing.connectEnd - performance.timing.connectStart
+
+  ``performance.timing.connectEnd - performance.timing.connectStart``
 
 ####Sever
 - Request (ブラウザがサーバにリクエストし処理をするまでの時間)
-      performance.timing.responseStart - performance.timing.requestStart
+
+  ``performance.timing.responseStart - performance.timing.requestStart``
+
 - Response (ブラウザがサーバからレスポンスを受け取るまでの時間)
-      performance.timing.responseEnd - performance.timing.responseStart
+
+  ``performance.timing.responseEnd - performance.timing.responseStart``
 
 ####client
 - Processing (ブラウザがDOM構築を完了するまでの時間)
-      performance.timing.domComplete - performance.timing.domLoading
+
+  ``performance.timing.domComplete - performance.timing.domLoading``
+
   - DomInteractive (HTMLを解析しDOMの準備をするまでの時間)
-        performance.timing.domInteractive - performance.timing.domLoading
+
+    ``performance.timing.domInteractive - performance.timing.domLoading``
+
   - ParserBlock (パーサーブロックJavaScriptの時間)
-        performance.timing.domContentLoadedEventStart - performance.timing.domInteractive
+
+    ``performance.timing.domContentLoadedEventStart - performance.timing.domInteractive``
+
   - DomContentLoaded (CSSOMの準備をするまでの時間)
-        performance.timing.domContentLoadedEventEnd - performance.timing.domInteractive
+    
+    ``performance.timing.domContentLoadedEventEnd - performance.timing.domInteractive``
+
   - DomComplete (ページとサブリソースの準備が整うまでの時間)
-        performance.timing.domComplete - performance.timing.domContentLoadedEventEnd
+
+    ``performance.timing.domComplete - performance.timing.domContentLoadedEventEnd``
+
 - Load (ブラウザがloadイベントを発火するまでの時間)
-      performance.timing.loadEventEnd - performance.timing.loadEventStart
+
+  ``performance.timing.loadEventEnd - performance.timing.loadEventStart``
