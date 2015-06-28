@@ -44,7 +44,7 @@ HTML5のNavigation Timing APIを使用し算出をおこなっています。
 
   ``performance.timing.responseEnd - performance.timing.responseStart``
 
-####client
+####Client
 - Processing (ブラウザがDOM構築を完了するまでの時間)
 
   ``performance.timing.domComplete - performance.timing.domLoading``
@@ -58,7 +58,7 @@ HTML5のNavigation Timing APIを使用し算出をおこなっています。
     ``performance.timing.domContentLoadedEventStart - performance.timing.domInteractive``
 
   - DomContentLoaded (CSSOMの準備をするまでの時間)
-    
+
     ``performance.timing.domContentLoadedEventEnd - performance.timing.domInteractive``
 
   - DomComplete (ページとサブリソースの準備が整うまでの時間)
