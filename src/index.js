@@ -32,6 +32,6 @@ function getSecondStr(startTime, endTime) {
 	if (startTime === 0 || endTime === 0 || (endTime - startTime === 0)) {
 		return "-";
 	}
-	var time = "" + (endTime - startTime) / 1000;
-	return time.substring(0, 4) + "秒"; 
+	var time = Math.round((endTime - startTime) / 10) / 100;
+	return time + "秒";
 }

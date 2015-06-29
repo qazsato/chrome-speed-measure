@@ -11,11 +11,11 @@ chrome[api].onMessage.addListener(
 
 		var startTime = request.timing.redirectStart === 0 ? request.timing.fetchStart : request.timing.redirectStart;
 		var endTime = request.timing.loadEventEnd;
-		var totalTime = "" + ((endTime - startTime) / 1000);
-		chrome.browserAction.setBadgeText({text: totalTime.substring(0, 4), tabId: sender.tab.id});
+		var totalTime = ((endTime - startTime) / 1000).toPrecision(3).substring(0, 4);
+		chrome.browserAction.setBadgeText({text: totalTime, tabId: sender.tab.id});
 	}
 );
- 
+
 chrome.tabs.onRemoved.addListener(function(tabId) {
     chrome.storage.local.get("cache", function(data) {
         if (data.cache) {
