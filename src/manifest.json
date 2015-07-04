@@ -1,27 +1,27 @@
 {
-	"name": "速度はかるくん",
-	"version": "1.2",
-	"manifest_version": 2,
-	"description": "Webパフォーマンス計測ツール",
-	"content_scripts": [{
-		"matches": ["http://*/*", "https://*/*"],
-		"js": ["content_script.js"]
-	}],
-	"permissions": [
-		"tabs",
-		"storage"
-	],
-	"background": {
-		"scripts": ["background.js"]
-	},
-	"browser_action": {
-		"default_icon": "icon.png",
-		"default_title": "速度はかるくん",
-		"default_popup": "index.html"
-	},
-	"icons": {
-		"16": "icon.png",
-		"48": "icon.png",
-		"128": "icon.png"
-	}
+  "name": "速度はかるくん",
+  "version": "1.2",
+  "manifest_version": 2,
+  "description": "Webパフォーマンス計測ツール",
+  "content_scripts": [{
+    "matches": ["http://*/*", "https://*/*"],
+    "js": ["content_script.js"]
+  }],
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "速度はかるくん",
+    "default_popup": "index.html"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
 }
