@@ -1,6 +1,6 @@
 {
   "name": "速度はかるくん",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "manifest_version": 2,
   "description": "Webパフォーマンス計測ツール",
   "content_scripts": [{

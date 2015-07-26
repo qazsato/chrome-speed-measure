@@ -10,7 +10,9 @@
       var timing = performance.timing;
       var json = {};
       for (var key in timing) {
-        json[key] = timing[key];
+        if (typeof timing[key] !== "function") {
+          json[key] = timing[key];
+        }
       }
       var api = chrome.runtime && chrome.runtime.sendMessage ? "runtime" : "extension";
       chrome[api].sendMessage({timing: json});  // background.jsに通知
