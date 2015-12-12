@@ -1,7 +1,9 @@
-chrome.tabs.getSelected(null, function (tab) {
-  chrome.storage.local.get('cache', function(data) {
-    var timing = data.cache['tab' + tab.id];
-    var startTime = timing.redirectStart === 0 ? timing.fetchStart : timing.redirectStart;
+'use strict';
+
+chrome.tabs.getSelected(null, tab => {
+  chrome.storage.local.get('cache', data => {
+    let timing = data.cache['tab' + tab.id];
+    let startTime = timing.redirectStart === 0 ? timing.fetchStart : timing.redirectStart;
     // Total
     document.getElementById("total-time").innerText = getSecondStr(startTime, timing.loadEventEnd);
 
@@ -28,10 +30,10 @@ chrome.tabs.getSelected(null, function (tab) {
     });
 });
 
-function getSecondStr(startTime, endTime) {
+let getSecondStr = (startTime, endTime) => {
   if (startTime === 0 || endTime === 0 || (endTime - startTime === 0)) {
     return "-";
   }
-  var time = Math.round((endTime - startTime) / 10) / 100;
+  let time = Math.round((endTime - startTime) / 10) / 100;
   return time + "秒";
 }
