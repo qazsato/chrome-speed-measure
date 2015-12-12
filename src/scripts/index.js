@@ -4,8 +4,6 @@ chrome.tabs.getSelected(null, tab => {
   chrome.storage.local.get('cache', data => {
     let timing = data.cache['tab' + tab.id];
     let startTime = timing.redirectStart === 0 ? timing.fetchStart : timing.redirectStart;
-    // Total
-    document.getElementById("total-time").innerText = getSecondStr(startTime, timing.loadEventEnd);
 
     // Network
     document.getElementById("network-time").innerText = getSecondStr(startTime, timing.connectEnd);

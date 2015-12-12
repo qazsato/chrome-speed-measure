@@ -1,52 +1,31 @@
+html {
+  height: 480px;
+}
+
 body {
-  width: 340px;
-  height: 415px;
+  width: 390px;
+  height: 480px;
+  margin: 10px 10px 20px 10px;
 }
 
-h1 {
-  margin: 15px 0;
-  font-size: 30px;
-}
-
-table {
-  width: 100%;
-  border-spacing: 1px;
-}
-
-table thead tr {
-  height: 24px;
-  background-color: #2C3E50;
-}
-
-table thead tr th {
-  color: white;
-  font-weight: normal;
-}
-
-table tbody tr:nth-child(odd) {
-  background-color: #ECF0F1;
-}
-
-table tbody tr:nth-child(even) {
-  background-color: white;
-}
-
-table tbody tr td {
-  padding: 5px;
+.mdl-data-table th {
+  height: auto;
+  padding: 8px 0;
   text-align: center;
-  word-break: break-all;
 }
 
-table tbody tr td.label {
-  width: 20%;
+.mdl-data-table tbody tr {
+  height: auto;
 }
 
-table tbody tr td.sub-label {
-  width: 22%;
+.mdl-data-table td {
+  height: auto;
+  padding: 8px;
+  text-align: center;
 }
 
-table tbody tr td.name[colspan="2"] {
-  width: 60%;
+.mdl-data-table tbody tr:hover {
+  background: white;
 }
 
 a {
