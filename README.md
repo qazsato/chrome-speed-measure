@@ -3,7 +3,7 @@
 
 Webサイトの表示速度を計測するChrome拡張機能です
 
-![キャプチャー](https://raw.githubusercontent.com/wiki/qaz-s/chrome-speed-measure/image.png)
+![キャプチャー](https://raw.githubusercontent.com/wiki/qazsato/chrome-speed-measure/image.png)
 
 特徴
 --
